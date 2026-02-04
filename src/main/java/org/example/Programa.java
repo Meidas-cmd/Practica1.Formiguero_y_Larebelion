@@ -7,6 +7,7 @@ public class Programa {
     private String nombre;
     private Cadena cadena;
     private  int temporadas;
+    private Empleado director;
     private ArrayList<Empleado> listaEmpleado;
     private ArrayList<Invitado> listaInvitados;
 
