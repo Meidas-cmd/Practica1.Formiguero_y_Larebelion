@@ -75,11 +75,36 @@ public class Programa {
         listaInvitados.add(invi);
 
     }
+    public int vecesInvitado(String nombre) {
+        int cont = 0;
+        for (Invitado i : listaInvitados) {
+            if (i.getNombre().equals(nombre)) {
+
+                cont++;
+
+            }
+
+        }
+        System.out.println("El invitado  "+nombre+" ha sido intadodo  "+cont+" veces");
+
+        return cont;
+    }
+
+    public void rastrearInvitado(String nombre) {
+        int veces= vecesInvitado(nombre);
+        System.out.println(nombre+" ha sido invitado "+veces+" veces");
+        for (Invitado i : listaInvitados) {
+            if (i.getNombre().equals(nombre)) {
 
 
+                System.out.println(nombre+" vino en la temporada"+i.getTemporada()+ " en la fecha "+i.getFecha_visita());
+
+            }
 
 
+        }
 
+    }
     public String getNombre() {
         return nombre;
     }
