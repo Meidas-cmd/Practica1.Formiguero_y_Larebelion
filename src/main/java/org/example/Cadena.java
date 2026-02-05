@@ -1,5 +1,6 @@
 package org.example;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Cadena {
@@ -10,8 +11,38 @@ public class Cadena {
     public Cadena (String nombre){
 
         this.nombre = nombre;
+        this.listaProgramas = new ArrayList<>();
 
+    }
 
+    public void agregarPrograma(String nombre,int temporadas,String director){
+
+        Programa nuevo = new Programa(nombre,temporadas,this,director);
+        listaProgramas.add(nuevo);
+
+    }
+
+    public void invitadoAntes(String nombreInvitado) {
+        Programa primerPrograma = null;
+        LocalDateTime fechaPrimera = null;
+
+        for (Programa p : listaProgramas) {
+            for (Invitado i : p.getListaInvitados()) {
+                if (i.getNombre().equalsIgnoreCase(nombreInvitado)) {
+                    if (fechaPrimera == null || i.getFecha_visita().isBefore(fechaPrimera)) {
+                        fechaPrimera = i.getFecha_visita();
+                        primerPrograma = p;
+                    }
+                }
+            }
+        }
+
+        if (primerPrograma != null) {
+            System.out.println(nombreInvitado + " estuvo primero en " + primerPrograma.getNombre() +
+                    " el día " + fechaPrimera.toLocalDate());
+        } else {
+            System.out.println("El invitado " + nombreInvitado + " no ha estado en ningún programa de esta cadena.");
+        }
     }
 
     public String getNombre() {

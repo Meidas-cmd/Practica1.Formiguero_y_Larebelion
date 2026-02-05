@@ -9,13 +9,15 @@ public class Empleado {
     private String cargo;
     private Empleado director;
 
-    public Empleado (String id,String nombre,String cargo){
+    public Empleado (String nombre,String cargo, Empleado director){
 
         setId();
         this.nombre = nombre;
-        this.cargo = cargo;
-
+        setDirector(director);
+        setCargo(cargo);
     }
+
+
 
     public String getId() {
         return id;
@@ -66,7 +68,7 @@ public class Empleado {
             this.cargo = "pte";
         }
         if (estado2){
-            setDirector();
+            setDirector(director);
         }
     }
 

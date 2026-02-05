@@ -1,8 +1,12 @@
 package org.example;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class Invitado {
+
+    Scanner entrada = new Scanner(System.in);
 
     private String nombre;
     private String profesion;
@@ -13,7 +17,7 @@ public class Invitado {
 
         this.nombre = nombre;
         this.profesion = profesion;
-        //fecha_visita por defecto el día que se crea el Invitado
+        setFecha_visita();
         this.temporada = temporada;
 
     }
@@ -38,8 +42,17 @@ public class Invitado {
         return fecha_visita;
     }
 
-    public void setFecha_visita(LocalDateTime fecha_visita) {
-        this.fecha_visita = fecha_visita;
+    public void setFecha_visita() {
+        System.out.println("Dime el año que vino el invitado: ");
+        int año = entrada.nextInt();
+
+        System.out.println("En que mes vino el invitado:");
+        int mes = entrada.nextInt();
+
+        System.out.println("Introduce el dia que vino el invitado:");
+        int dia = entrada.nextInt();
+
+        this.fecha_visita = LocalDateTime.of(año,mes,dia,0,0);
     }
 
     public int getTemporada() {
