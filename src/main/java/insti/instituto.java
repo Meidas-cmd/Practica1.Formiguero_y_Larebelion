@@ -4,9 +4,9 @@ import lombok.*;
 
 import java.util.Objects;
 
-//@Getter  @Setter @ToString
-//@NoArgsConstructor
-//@AllArgsConstructor
+@Getter  @Setter @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 //@RequiredArgsConstructor
 //@Data
 public class instituto {

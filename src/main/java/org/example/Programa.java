@@ -40,15 +40,6 @@ public class Programa {
 
     }
 
-//    public int vecesInvitado(){
-//        int cont = 0;
-//
-//
-//
-//
-//        return
-//    }
-
 
     public boolean buscarInvitado(String nombre){
         boolean esta = false;

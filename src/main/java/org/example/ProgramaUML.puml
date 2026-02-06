@@ -1,0 +1,56 @@
+@startuml
+
+package org.example {
+
+class Cadena {
+    - nombre : String
+    - listaProgramas : ArrayList<Programa>
+    + Cadena(nombre : String)
+    + agregarPrograma(nombre : String, temporadas : int, director : String)
+    + invitadoAntes(nombreInvitado : String)
+}
+
+class Programa {
+    - nombre : String
+    - cadena : Cadena
+    - temporadas : int
+    - director : Empleado
+    - listaEmpleado : ArrayList<Empleado>
+    - listaInvitados : ArrayList<Invitado>
+    + Programa(nombre : String, temporadas : int, cadena : Cadena, director : String)
+    + invitadosTemporada(temporada : int)
+    + buscarInvitado(nombre : String) : boolean
+    + agregarEmpleado(nombre : String, cargo : String)
+    + agregarInvitado(nombre : String, profesion : String, temporada : int)
+    + vecesInvitado(nombre : String) : int
+    + rastrearInvitado(nombre : String)
+}
+
+class Empleado {
+    - AUX : String
+    - num : int
+    - id : String
+    - nombre : String
+    - cargo : String
+    - director : Empleado
+    + Empleado(nombre : String, cargo : String, director : Empleado)
+}
+
+class Invitado {
+    - nombre : String
+    - profesion : String
+    - fecha_visita : LocalDateTime
+    - temporada : int
+    + Invitado(nombre : String, profesion : String, temporada : int)
+}
+
+}
+
+' Relaciones
+Cadena "1" *-- "0..*" Programa
+Programa "1" o-- "1" Empleado : director
+Programa "1" *-- "0..*" Empleado
+Programa "1" *-- "0..*" Invitado
+Empleado "0..1" --> "1" Empleado : director
+
+@enduml
